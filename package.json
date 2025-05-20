@@ -1,7 +1,7 @@
 {
-  "name": "mp4box",
+  "name": "@anselmin/mp4box",
   "version": "0.5.4",
-  "description": "JavaScript version of GPAC's MP4Box tool",
+  "description": "Based on mp4box.js - This version ignores box of type 'meta' from videos",
   "keywords": [
     "mp4",
     "HTML 5 media",
