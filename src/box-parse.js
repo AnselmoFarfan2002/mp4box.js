@@ -65,6 +65,16 @@ BoxParser.parseOneBox = function(stream, headerOnly, parentSize) {
 			}
 		}
 	}
+
+	if (type === "meta") {
+		box = new BoxParser.Box(type, size);
+		box.hdr_size = hdr_size;
+		box.start = start;
+		box.has_unparsed_data = true;
+		box.parseDataAndRewind(stream);
+		return { code: BoxParser.OK, box: box, size: box.size };
+	}
+
 	if (size !== 0 && size < hdr_size) {
 		Log.error("BoxParser", "Box of type "+type+" has an invalid size "+size+" (too small to be a box)");
 		return { code: BoxParser.ERR_NOT_ENOUGH_DATA, type: type, size: size, hdr_size: hdr_size, start: start };
